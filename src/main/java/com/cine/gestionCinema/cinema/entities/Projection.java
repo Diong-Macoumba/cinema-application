@@ -22,6 +22,7 @@ public class Projection implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "Sal_Proj")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Salle salle;
 
     @ManyToOne

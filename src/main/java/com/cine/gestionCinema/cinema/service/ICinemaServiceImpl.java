@@ -119,11 +119,13 @@ public class ICinemaServiceImpl implements ICinemaService {
     public void initFilms() {
         Double[] durees = new Double[] {1.5, 2.5, 3.0, 2.4, 1.9};
         List<Categorie> categories = categorieRepositorie.findAll();
-        Stream.of("The predator","macaw-vaporwave", "Bloodshot", "First Fight", "Night School", "Jarhead 3").forEach(nomfilm -> {
+        Stream.of("angel of mine 2019","assieges 2020", "greenland le dernier refuge 2020", "intrigo samaria 2020", "joker 2019",
+                  "la chute du president 2019", "mank 2020", "marraine ou presque 2020", "tenet 2020", "triple threat 2019",
+                  "un tres mauvais plan 2020").forEach(nomfilm -> {
             Film film = new Film();
             film.setTitreFilm(nomfilm);
             film.setDureeFilm(durees[new Random().nextInt(durees.length)]);
-            film.setPhoto(nomfilm.replaceAll(" ", ""));
+            film.setPhoto(nomfilm);
             film.setCategorie(categories.get(new Random().nextInt(categories.size())));
             filmRepositorie.save(film);
 

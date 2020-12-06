@@ -31,7 +31,7 @@ public class CinemaRestController {
    public byte[] imageFilm(@PathVariable(name = "id") Long id) throws IOException {
        Film film = filmRepositorie.findById(id).get();
        String photoFilm = film.getPhoto();
-       File file = new File("/home/mac/projet/dev full stack/image/" + photoFilm + ".jpg");
+       File file = new File("C:/Users/Maczo/Pictures/images films/" + photoFilm + ".jpg");
        Path path = Paths.get(file.toURI());
        return Files.readAllBytes(path);
    }
