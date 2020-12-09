@@ -94,7 +94,7 @@ public class ICinemaServiceImpl implements ICinemaService {
 
     @Override
     public void initSeances() {
-        Stream.of("09:00", "12:00", "15:00", "18:00", "21:00").forEach(s -> {
+        Stream.of("12:00", "15:00", "18:00", "21:00", "01:00").forEach(s -> {
             DateFormat dateFormat = new SimpleDateFormat("HH:mm");
             Seance seance = new Seance();
             try {
@@ -135,11 +135,13 @@ public class ICinemaServiceImpl implements ICinemaService {
     @Override
     public void initProjections() {
         Double[] prix = new Double[] {2500.0, 4000.0, 4500.0, 3000.0, 6250.0};
+        List<Film> filmList = filmRepositorie.findAll();
         villeRepositorie.findAll().forEach(ville -> {
             cinemaRepositorie.findAll().forEach(cinema -> {
                 salleRepositorie.findAll().forEach(salle -> {
-                    filmRepositorie.findAll().forEach(film -> {
+                    int index = new Random().nextInt(filmList.size());
                         seanceRepositorie.findAll().forEach( seance -> {
+                            Film film = filmList.get(index);
                             Projection projection = new Projection();
                             projection.setDateProjection(new Date());
                             projection.setPrixProjection(prix[new Random().nextInt(prix.length)]);
@@ -147,7 +149,7 @@ public class ICinemaServiceImpl implements ICinemaService {
                             projection.setSalle(salle);
                             projection.setSeance(seance);
                             projectionRepositorie.save(projection);
-                        });
+
                     });
                 });
             });

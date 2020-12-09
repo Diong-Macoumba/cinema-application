@@ -11,8 +11,8 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 @SpringBootApplication
 public class CinemaApplication implements CommandLineRunner {
 
-	//@Autowired
-	//private ICinemaService iCinemaService;
+	@Autowired
+	private ICinemaService iCinemaService;
 	@Autowired
 	private RepositoryRestConfiguration repositoryRestConfiguration;
 

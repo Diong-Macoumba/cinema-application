@@ -34,5 +34,6 @@ public class Projection implements Serializable {
     private Collection<Ticket> tickets;
 
     @ManyToOne
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Seance seance;
 }
